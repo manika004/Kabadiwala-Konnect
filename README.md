@@ -6,7 +6,7 @@
 ## 🚀 Live Demo & Quick Start
 
 Both backend and frontend are already running:
-- **Frontend Web App**: [http://localhost:5173](http://localhost:5173)
+- **Live Deployed Link**: [Kabadiwala Konnect](https://kabadiwala-konnect-aigpi9clg-bitbybit3.vercel.app/)
 - **Backend REST API**: [http://localhost:5000](http://localhost:5000)
 - **API Health Check**: [http://localhost:5000/api/health](http://localhost:5000/api/health)
 
