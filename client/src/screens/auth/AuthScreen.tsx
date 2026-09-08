@@ -117,7 +117,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
     <div className="min-h-screen w-full bg-[#124b38] flex flex-col lg:flex-row">
       
       {/* ================= LEFT EDITORIAL HERO PANEL ================= */}
-      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-start relative overflow-hidden p-8 sm:p-10 lg:p-12 xl:p-14 space-y-6 sm:space-y-8">
+      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-between relative overflow-hidden p-8 sm:p-10 lg:p-12 xl:p-14 min-h-full">
         
         {/* Top Section: K² Brand & Aligned Text */}
         <div className="space-y-5 sm:space-y-6">
@@ -173,15 +173,13 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
           </div>
         </div>
 
-        {/* Recyclables Collection Showcase Image (Placed higher up, directly below text) */}
-        <div className="pt-2">
-          <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-black/10 max-w-md">
-            <img 
-              src="/recyclables.jpg" 
-              alt="Household recyclable collection" 
-              className="w-full h-48 sm:h-56 object-cover select-none"
-            />
-          </div>
+        {/* Recyclables Collection Items Cutout (No border, natural items) */}
+        <div className="pt-8 sm:pt-10 lg:pt-12 mt-auto">
+          <img 
+            src="/recyclables-items.png" 
+            alt="Household recyclable scrap items" 
+            className="w-full max-w-lg object-contain select-none drop-shadow-2xl"
+          />
         </div>
 
       </div>
