@@ -59,9 +59,7 @@ export default function App() {
 
   useEffect(() => {
     refreshData();
-    const interval = setInterval(refreshData, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  }, [currentRole, customerTab, collectorTab]);
 
   const handleResetDemo = async () => {
     if (confirm('Reset demo state to initial test data?')) {

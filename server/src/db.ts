@@ -10,7 +10,9 @@ import {
   MaterialCategory 
 } from './types';
 
-const DB_FILE = path.join(__dirname, 'data', 'db.json');
+const DB_FILE = process.env.VERCEL 
+  ? path.join('/tmp', 'db.json') 
+  : path.join(__dirname, 'data', 'db.json');
 
 interface DatabaseSchema {
   rates: RateItem[];

@@ -16,9 +16,6 @@ export const RecyclerDashboard: React.FC = () => {
 
   useEffect(() => {
     loadStock();
-    // Poll stock every 4 seconds to show live updates when pickups complete!
-    const interval = setInterval(loadStock, 4000);
-    return () => clearInterval(interval);
   }, []);
 
   const totalStockKg = stocks.reduce((sum, s) => sum + s.currentStockKg, 0);

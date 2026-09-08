@@ -177,11 +177,37 @@ router.patch('/:id/status', (req, res) => {
 
 router.post('/:id/weigh', (req, res) => {
   const { id } = req.params;
-  const { actualWeight, paymentMethod = 'Instant UPI' } = req.body;
+  const { 
+    actualWeight, 
+    paymentMethod = 'Instant UPI',
+    materialCategory = 'cardboard',
+    customerName = 'Aarav Sharma'
+  } = req.body;
 
-  const pickup = db.getPickupById(id);
+  let pickup = db.getPickupById(id);
   if (!pickup) {
-    return res.status(404).json({ success: false, message: 'Pickup not found' });
+    pickup = {
+      id,
+      customerId: 'user-cust-1',
+      customerName,
+      customerPhone: '+91 98765 43210',
+      collectorId: 'col-1',
+      collectorName: 'Ramesh Kumar',
+      collectorPhone: '+91 98111 22334',
+      materialCategory: materialCategory as MaterialCategory,
+      estimatedWeight: Number(actualWeight) || 10,
+      location: {
+        address: 'Flat 402, Green Meadows Apt, Sector 14, Gurugram',
+        lat: 28.4682,
+        lng: 77.0321
+      },
+      preferredTime: 'Today',
+      status: 'accepted',
+      statusTimeline: [],
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    db.createPickup(pickup);
   }
 
   const weight = parseFloat(actualWeight);
