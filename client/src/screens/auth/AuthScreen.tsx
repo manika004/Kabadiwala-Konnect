@@ -148,14 +148,29 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
           </p>
         </div>
 
-        {/* Bottom Photograph: Recyclables Bag */}
-        <div className="relative mt-8 -mx-8 sm:-mx-12 lg:-mx-14 xl:-mx-16 -mb-8 sm:-mb-12 lg:-mb-14 xl:-mb-16 pt-4">
-          <img 
-            src="/scrap-bag.jpg" 
-            alt="Scrap materials in paper bag" 
-            className="w-full object-cover max-h-[320px] select-none pointer-events-none"
-          />
-          <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#124b38] to-transparent" />
+        {/* Ksquare Official Branding Logo */}
+        <div className="pt-8 mt-auto z-10">
+          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-5 border border-white/15 flex items-center space-x-4 max-w-md shadow-xl">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-white p-1.5 shrink-0 shadow-lg border border-white/20">
+              <img 
+                src="/logo.jpg" 
+                alt="Ksquare Logo" 
+                className="w-full h-full object-contain rounded-xl"
+              />
+            </div>
+            <div className="space-y-1">
+              <div className="flex items-center space-x-2">
+                <span className="text-2xl font-black text-white tracking-tight">Ksquare</span>
+                <span className="px-2 py-0.5 rounded-lg bg-emerald-500 text-white font-extrabold text-[10px] tracking-wider shadow-sm">K²</span>
+              </div>
+              <p className="text-xs font-semibold text-[#9fe3be] uppercase tracking-wider">
+                Turning Waste into Tomorrow
+              </p>
+              <p className="text-xs text-white/70 leading-relaxed font-normal">
+                Waste • People • Possibilities • Connected
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
