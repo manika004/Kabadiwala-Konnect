@@ -32,7 +32,9 @@ app.use('/api/receipts', receiptsRoutes);
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/analytics', analyticsRoutes);
 
-app.listen(PORT, () => {
-  console.log('Kabadiwala Connect Backend running on http://localhost:' + PORT);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log('Kabadiwala Connect Backend running on http://localhost:' + PORT);
+  });
+}
 export default app;

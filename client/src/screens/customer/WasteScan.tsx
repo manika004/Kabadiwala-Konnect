@@ -14,14 +14,67 @@ export const WasteScan: React.FC<Props> = ({ onProceedToBooking }) => {
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
   const [classification, setClassification] = useState<AIClassificationResult | null>(null);
 
+  const LOCAL_SAMPLES: DemoSample[] = [
+    {
+      id: 'sample-cardboard',
+      title: 'Corrugated Delivery Cartons',
+      category: 'cardboard',
+      imageUrl: '/samples/cardboard.jpeg',
+      description: 'Amazon delivery packaging boxes and corrugated cardboard sheets'
+    },
+    {
+      id: 'sample-paper',
+      title: 'Old Newspapers & Study Books',
+      category: 'paper',
+      imageUrl: '/samples/paper.jpeg',
+      description: 'Stacked daily newspapers, study guides, and white office printouts'
+    },
+    {
+      id: 'sample-plastic',
+      title: 'PET Mineral Water & Soda Bottles',
+      category: 'plastic',
+      imageUrl: '/samples/plastic.jpeg',
+      description: 'Crushed and intact transparent PET plastic beverage bottles'
+    },
+    {
+      id: 'sample-metal',
+      title: 'Aluminum Soda Cans & Iron Scrap',
+      category: 'metal',
+      imageUrl: '/samples/metal.jpg',
+      description: 'Empty beverage tins, aluminum cans, and minor metallic scraps'
+    },
+    {
+      id: 'sample-glass',
+      title: 'Glass Beverage & Sauce Bottles',
+      category: 'glass',
+      imageUrl: '/samples/glass.jpeg',
+      description: 'Clean amber, green, and clear glass bottles and jars'
+    },
+    {
+      id: 'sample-ewaste',
+      title: 'Discarded Electronics & Motherboard',
+      category: 'e_waste',
+      imageUrl: '/samples/ewaste.jpeg',
+      description: 'Dead circuit board, old smartphone, chargers, and ribbon cables'
+    }
+  ];
+
   useEffect(() => {
-    api.getAISamples().then(res => {
-      setSamples(res);
-      // Auto select first sample for instant demo ready
-      if (res.length > 0) {
-        handleSelectSample(res[0]);
-      }
-    });
+    api.getAISamples()
+      .then(res => {
+        const mapped = res.map(s => {
+          const local = LOCAL_SAMPLES.find(l => l.id === s.id);
+          return local ? { ...s, imageUrl: local.imageUrl } : s;
+        });
+        setSamples(mapped);
+        if (mapped.length > 0) {
+          handleSelectSample(mapped[0]);
+        }
+      })
+      .catch(() => {
+        setSamples(LOCAL_SAMPLES);
+        handleSelectSample(LOCAL_SAMPLES[0]);
+      });
   }, []);
 
   const handleSelectSample = async (sample: DemoSample) => {

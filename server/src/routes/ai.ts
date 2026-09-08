@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { classifyWasteImage, DEMO_SAMPLES } from '../services/classifier';
+import { classifyWasteImage, getDemoSamples } from '../services/classifier';
 
 const router = Router();
 
 router.get('/samples', (_req, res) => {
   res.json({
     success: true,
-    samples: DEMO_SAMPLES
+    samples: getDemoSamples()
   });
 });
 

@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { MaterialCategory } from '../types';
 import { db } from '../db';
 
@@ -25,50 +27,82 @@ export interface DemoSample {
   description: string;
 }
 
-export const DEMO_SAMPLES: DemoSample[] = [
-  {
-    id: 'sample-cardboard',
-    title: 'Corrugated Delivery Cartons',
-    category: 'cardboard',
-    imageUrl: 'https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=600&q=80',
-    description: 'Amazon delivery packaging boxes and corrugated cardboard sheets'
-  },
-  {
-    id: 'sample-paper',
-    title: 'Old Newspapers & Study Books',
-    category: 'paper',
-    imageUrl: 'https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80',
-    description: 'Stacked daily newspapers, study guides, and white office printouts'
-  },
-  {
-    id: 'sample-plastic',
-    title: 'PET Mineral Water & Soda Bottles',
-    category: 'plastic',
-    imageUrl: 'https://images.unsplash.com/photo-1562077772-3ab12188cb85?auto=format&fit=crop&w=600&q=80',
-    description: 'Crushed and intact transparent PET plastic beverage bottles'
-  },
-  {
-    id: 'sample-metal',
-    title: 'Aluminum Soda Cans & Iron Scrap',
-    category: 'metal',
-    imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80',
-    description: 'Empty beverage tins, aluminum cans, and minor metallic scraps'
-  },
-  {
-    id: 'sample-glass',
-    title: 'Glass Beverage & Sauce Bottles',
-    category: 'glass',
-    imageUrl: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=600&q=80',
-    description: 'Clean amber, green, and clear glass bottles and jars'
-  },
-  {
-    id: 'sample-ewaste',
-    title: 'Discarded Electronics & Motherboard',
-    category: 'e_waste',
-    imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80',
-    description: 'Dead circuit board, old smartphone, chargers, and ribbon cables'
+export function resolveSampleImage(key: string, fallbackUrl: string): string {
+  const candidateDirs = [
+    path.resolve(__dirname, '../../../client/public/samples'),
+    path.resolve(__dirname, '../../client/public/samples'),
+    path.resolve(process.cwd(), '../client/public/samples'),
+    path.resolve(process.cwd(), 'client/public/samples'),
+    path.resolve(process.cwd(), 'public/samples')
+  ];
+
+  for (const dir of candidateDirs) {
+    try {
+      if (fs.existsSync(dir)) {
+        const files = fs.readdirSync(dir);
+        const match = files.find(f => {
+          const lower = f.toLowerCase();
+          return lower.startsWith(key) || lower.includes(key);
+        });
+        if (match) {
+          return '/samples/' + match;
+        }
+      }
+    } catch (e) {
+      // ignore
+    }
   }
-];
+  return fallbackUrl;
+}
+
+export function getDemoSamples(): DemoSample[] {
+  return [
+    {
+      id: 'sample-cardboard',
+      title: 'Corrugated Delivery Cartons',
+      category: 'cardboard',
+      imageUrl: resolveSampleImage('cardboard', '/samples/cardboard.jpeg'),
+      description: 'Amazon delivery packaging boxes and corrugated cardboard sheets'
+    },
+    {
+      id: 'sample-paper',
+      title: 'Old Newspapers & Study Books',
+      category: 'paper',
+      imageUrl: resolveSampleImage('paper', '/samples/paper.jpeg'),
+      description: 'Stacked daily newspapers, study guides, and white office printouts'
+    },
+    {
+      id: 'sample-plastic',
+      title: 'PET Mineral Water & Soda Bottles',
+      category: 'plastic',
+      imageUrl: resolveSampleImage('plastic', '/samples/plastic.jpeg'),
+      description: 'Crushed and intact transparent PET plastic beverage bottles'
+    },
+    {
+      id: 'sample-metal',
+      title: 'Aluminum Soda Cans & Iron Scrap',
+      category: 'metal',
+      imageUrl: resolveSampleImage('metal', '/samples/metal.jpg'),
+      description: 'Empty beverage tins, aluminum cans, and minor metallic scraps'
+    },
+    {
+      id: 'sample-glass',
+      title: 'Glass Beverage & Sauce Bottles',
+      category: 'glass',
+      imageUrl: resolveSampleImage('glass', 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80'),
+      description: 'Clean amber, green, and clear glass bottles and jars'
+    },
+    {
+      id: 'sample-ewaste',
+      title: 'Discarded Electronics & Motherboard',
+      category: 'e_waste',
+      imageUrl: resolveSampleImage('ewaste', 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80'),
+      description: 'Dead circuit board, old smartphone, chargers, and ribbon cables'
+    }
+  ];
+}
+
+export const DEMO_SAMPLES: DemoSample[] = getDemoSamples();
 
 export function classifyWasteImage(imageDataOrSampleId?: string): AIClassificationResult {
   let detectedCategory: MaterialCategory = 'cardboard';

@@ -11,6 +11,13 @@
     "start:server": "npm --prefix server start",
     "start": "node server/dist/index.js"
   },
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  },
   "keywords": [
     "circular-economy",
     "kabadiwala",
