@@ -57,6 +57,115 @@ export const CustomerHome: React.FC<Props> = ({
         <div className="absolute right-20 top-0 w-60 h-60 rounded-full bg-teal-400/15 blur-2xl pointer-events-none" />
       </div>
 
+      {/* All Services & Options Hub */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-lg font-bold text-slate-900">What would you like to do?</h2>
+            <p className="text-xs text-slate-500">Access all scrap collection options directly</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Option 1: Request Doorstep Pickup */}
+          <div 
+            onClick={() => onNavigate('request')}
+            className="p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 hover:shadow-md transition cursor-pointer group flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#124b38] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <Calendar className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-slate-900 text-sm group-hover:text-emerald-700 transition">
+                Request Pickup
+              </h3>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                Schedule vetted doorstep scrap collection with digital scale weighing.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center text-xs font-bold text-emerald-700 space-x-1 group-hover:translate-x-1 transition-transform">
+              <span>Book pickup</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </div>
+
+          {/* Option 2: AI Waste Scanner */}
+          <div 
+            onClick={() => onNavigate('scan')}
+            className="p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-500 hover:shadow-md transition cursor-pointer group flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <Camera className="w-6 h-6" />
+              </div>
+              <div className="flex items-center space-x-1.5">
+                <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-700 transition">
+                  AI Waste Scan
+                </h3>
+                <span className="px-1.5 py-0.5 rounded text-[9px] font-black bg-blue-100 text-blue-800">AI</span>
+              </div>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                Snap or upload photos for instant scrap classification & estimated value.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center text-xs font-bold text-blue-700 space-x-1 group-hover:translate-x-1 transition-transform">
+              <span>Scan scrap</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </div>
+
+          {/* Option 3: Live Tracking */}
+          <div 
+            onClick={() => {
+              if (latestActive) onSelectPickup(latestActive);
+              onNavigate('track');
+            }}
+            className="p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-amber-500 hover:shadow-md transition cursor-pointer group flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform relative">
+                <MapPin className="w-6 h-6" />
+                {latestActive && (
+                  <span className="absolute top-2 right-2 w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
+                )}
+              </div>
+              <h3 className="font-bold text-slate-900 text-sm group-hover:text-amber-700 transition">
+                Live Tracking
+              </h3>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                {latestActive ? 'Active pickup assigned! Follow live route & ETA.' : 'Track assigned Kabadiwala location and route in real-time.'}
+              </p>
+            </div>
+            <div className="mt-4 flex items-center text-xs font-bold text-amber-700 space-x-1 group-hover:translate-x-1 transition-transform">
+              <span>{latestActive ? 'Track active pickup' : 'Open live map'}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </div>
+
+          {/* Option 4: Bulk & Campus Collections */}
+          <div 
+            onClick={() => onNavigate('request')}
+            className="p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-teal-500 hover:shadow-md transition cursor-pointer group flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <Building2 className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-slate-900 text-sm group-hover:text-teal-700 transition">
+                Bulk Collections
+              </h3>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                High-volume recycling (250kg - 10T+) for colleges, schools & IT parks.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center text-xs font-bold text-teal-700 space-x-1 group-hover:translate-x-1 transition-transform">
+              <span>Book bulk drive</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Active Pickup Alert Banner */}
       {latestActive && (
         <div className="bg-white rounded-2xl border-2 border-emerald-500/40 p-5 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

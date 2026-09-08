@@ -23,7 +23,7 @@ import { RecyclerDashboard } from './screens/recycler/RecyclerDashboard';
 import { AdminDashboard } from './screens/admin/AdminDashboard';
 
 // Icons
-import { Home, Camera, Calendar, MapPin, History, LayoutDashboard, DollarSign } from 'lucide-react';
+import { Home, Camera, Calendar, MapPin, History, LayoutDashboard, DollarSign, ArrowLeft } from 'lucide-react';
 
 export default function App() {
   // Authentication session state (persisted in localStorage)
@@ -131,15 +131,15 @@ export default function App() {
         onResetDemo={handleResetDemo}
       />
 
-      {/* Role Sub-Navigation (if customer or collector) */}
+      {/* Role Sub-Navigation (if customer or institution) */}
       {(currentRole === 'customer' || currentRole === 'institution') && (
         <div className="bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="flex space-x-2 sm:space-x-4 py-2 overflow-x-auto text-xs font-semibold">
               <button
                 onClick={() => setCustomerTab('home')}
-                className={`flex items-center space-x-1.5 px-3 py-2 rounded-xl transition ${
-                  customerTab === 'home'
+                className={`flex items-center space-x-1.5 px-4 py-2 rounded-xl transition ${
+                  customerTab !== 'history'
                     ? 'bg-emerald-50 text-emerald-800 font-bold'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
@@ -149,47 +149,8 @@ export default function App() {
               </button>
 
               <button
-                onClick={() => setCustomerTab('scan')}
-                className={`flex items-center space-x-1.5 px-3 py-2 rounded-xl transition ${
-                  customerTab === 'scan'
-                    ? 'bg-emerald-50 text-emerald-800 font-bold'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <Camera className="w-3.5 h-3.5" />
-                <span>AI Waste Scan</span>
-              </button>
-
-              <button
-                onClick={() => setCustomerTab('request')}
-                className={`flex items-center space-x-1.5 px-3 py-2 rounded-xl transition ${
-                  customerTab === 'request'
-                    ? 'bg-emerald-50 text-emerald-800 font-bold'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <Calendar className="w-3.5 h-3.5" />
-                <span>Request Pickup</span>
-              </button>
-
-              <button
-                onClick={() => setCustomerTab('track')}
-                className={`flex items-center space-x-1.5 px-3 py-2 rounded-xl transition ${
-                  customerTab === 'track'
-                    ? 'bg-emerald-50 text-emerald-800 font-bold'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                <MapPin className="w-3.5 h-3.5" />
-                <span>Live Tracking</span>
-                {activePickupsCount > 0 && (
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                )}
-              </button>
-
-              <button
                 onClick={() => setCustomerTab('history')}
-                className={`flex items-center space-x-1.5 px-3 py-2 rounded-xl transition ${
+                className={`flex items-center space-x-1.5 px-4 py-2 rounded-xl transition ${
                   customerTab === 'history'
                     ? 'bg-emerald-50 text-emerald-800 font-bold'
                     : 'text-slate-600 hover:text-slate-900'
@@ -240,6 +201,20 @@ export default function App() {
         {/* Customer Experience */}
         {(currentRole === 'customer' || currentRole === 'institution') && (
           <>
+            {customerTab !== 'home' && customerTab !== 'history' && (
+              <div className="mb-6 flex items-center justify-between">
+                <button
+                  onClick={() => setCustomerTab('home')}
+                  className="inline-flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:text-[#124b38] hover:border-[#124b38] shadow-xs transition"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>← Back to Home</span>
+                </button>
+                <span className="text-xs text-slate-400 font-medium capitalize">
+                  {customerTab === 'scan' ? 'AI Waste Scan' : customerTab === 'request' ? 'Request Doorstep Pickup' : 'Live Pickup Tracking'}
+                </span>
+              </div>
+            )}
             {customerTab === 'home' && (
               <CustomerHome 
                 onNavigate={(t) => setCustomerTab(t as any)}
