@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthUser } from '../types';
-import { Recycle, RefreshCw, User, Truck, Factory, Shield, LogOut } from 'lucide-react';
+import { RefreshCw, User, Truck, Factory, Shield, LogOut } from 'lucide-react';
 
 interface NavbarProps {
   authUser: AuthUser | null;
@@ -52,21 +52,28 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo & Brand */}
+          
+          {/* Official Logo & Brand */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-500/20">
-              <Recycle className="w-6 h-6 animate-spin-slow" />
+            <div className="w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-emerald-500/15 border border-emerald-100 bg-white p-0.5 shrink-0">
+              <img 
+                src="/logo.jpg" 
+                alt="Ksquare Logo" 
+                className="w-full h-full object-contain rounded-lg"
+              />
             </div>
             <div>
-              <div className="flex items-center space-x-2">
-                <span className="font-extrabold text-lg tracking-tight bg-gradient-to-r from-emerald-700 to-teal-800 bg-clip-text text-transparent">
-                  Kabadiwala Konnect
+              <div className="flex items-center space-x-1.5">
+                <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-700 bg-clip-text text-transparent">
+                  Ksquare
                 </span>
-                <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
-                  MVP
+                <span className="px-1.5 py-0.5 text-[10px] font-black uppercase tracking-wider rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200">
+                  K²
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 hidden sm:block">AI-Assisted Smart Waste Network</p>
+              <p className="text-[11px] text-slate-500 hidden sm:block font-medium">
+                Turning Waste into Tomorrow
+              </p>
             </div>
           </div>
 
