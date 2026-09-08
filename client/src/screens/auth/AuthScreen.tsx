@@ -117,17 +117,34 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
     <div className="min-h-screen w-full bg-[#124b38] flex flex-col lg:flex-row">
       
       {/* ================= LEFT EDITORIAL HERO PANEL ================= */}
-      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-between relative overflow-hidden p-8 sm:p-12 lg:p-14 xl:p-16">
+      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-center relative overflow-hidden p-8 sm:p-12 lg:p-14 xl:p-16 space-y-8 sm:space-y-10">
         
-        {/* Top Tagline */}
-        <div className="space-y-8 z-10">
-          <div className="flex items-center space-x-2 text-white/90 text-xs font-bold tracking-widest uppercase">
-            <div className="w-5 h-5 rounded-md bg-white/10 flex items-center justify-center">
-              <Compass className="w-3.5 h-3.5 text-emerald-300" />
-            </div>
-            <span>NOTHING GOOD GOES TO WASTE</span>
+        {/* K² / Ksquare Brand Header at the Top */}
+        <div className="flex items-center space-x-4">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-white p-1.5 shrink-0 shadow-xl border border-white/20">
+            <img 
+              src="/logo.jpg" 
+              alt="Ksquare K² Logo" 
+              className="w-full h-full object-contain rounded-xl"
+            />
           </div>
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2">
+              <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">Ksquare</span>
+              <span className="px-2 py-0.5 rounded-lg bg-emerald-500 text-white font-extrabold text-xs tracking-wider shadow-sm">K²</span>
+            </div>
+            <p className="text-xs font-semibold text-[#9fe3be] uppercase tracking-wider">
+              Turning Waste into Tomorrow
+            </p>
+            <div className="flex items-center space-x-1.5 text-white/80 text-[10px] font-bold tracking-widest uppercase pt-0.5">
+              <Compass className="w-3 h-3 text-emerald-300" />
+              <span>NOTHING GOOD GOES TO WASTE</span>
+            </div>
+          </div>
+        </div>
 
+        {/* Text Content Aligned Below K² */}
+        <div className="space-y-6">
           {/* Headline with Editorial Serif Accent */}
           <div className="space-y-1">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
@@ -142,36 +159,17 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
           </div>
 
           {/* Subtitle */}
-          <p className="text-white/80 text-sm sm:text-base font-normal leading-relaxed max-w-md pt-2">
+          <p className="text-white/80 text-sm sm:text-base font-normal leading-relaxed max-w-md">
             A cleaner home. A stronger local community.<br />
             A second life for the things you leave behind.
           </p>
+
+          {/* Tagline */}
+          <p className="text-xs text-emerald-200/70 tracking-wider uppercase font-medium pt-1">
+            Waste • People • Possibilities • Connected
+          </p>
         </div>
 
-        {/* Ksquare Official Branding Logo */}
-        <div className="pt-8 mt-auto z-10">
-          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-5 border border-white/15 flex items-center space-x-4 max-w-md shadow-xl">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-white p-1.5 shrink-0 shadow-lg border border-white/20">
-              <img 
-                src="/logo.jpg" 
-                alt="Ksquare Logo" 
-                className="w-full h-full object-contain rounded-xl"
-              />
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center space-x-2">
-                <span className="text-2xl font-black text-white tracking-tight">Ksquare</span>
-                <span className="px-2 py-0.5 rounded-lg bg-emerald-500 text-white font-extrabold text-[10px] tracking-wider shadow-sm">K²</span>
-              </div>
-              <p className="text-xs font-semibold text-[#9fe3be] uppercase tracking-wider">
-                Turning Waste into Tomorrow
-              </p>
-              <p className="text-xs text-white/70 leading-relaxed font-normal">
-                Waste • People • Possibilities • Connected
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* ================= RIGHT INTERACTIVE AUTH PANEL ================= */}
