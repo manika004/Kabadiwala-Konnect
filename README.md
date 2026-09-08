@@ -3,12 +3,9 @@
 
 ---
 
-## 🚀 Live Demo & Quick Start
+## 🚀 Live Demo
 
-Both backend and frontend are already running:
 - **Live Deployed Link**: [Kabadiwala Konnect](https://kabadiwala-konnect.vercel.app/)
-- **Backend REST API**: [http://localhost:5000](http://localhost:5000)
-- **API Health Check**: [http://localhost:5000/api/health](http://localhost:5000/api/health)
 
 ### Running manually:
 ```bash
