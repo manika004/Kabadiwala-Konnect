@@ -117,10 +117,10 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
     <div className="min-h-screen w-full bg-[#124b38] flex flex-col lg:flex-row">
       
       {/* ================= LEFT EDITORIAL HERO PANEL ================= */}
-      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-between relative overflow-hidden p-8 sm:p-10 lg:p-12 xl:p-14 space-y-6">
+      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-start relative overflow-hidden p-8 sm:p-10 lg:p-12 xl:p-14 space-y-6 sm:space-y-8">
         
         {/* Top Section: K² Brand & Aligned Text */}
-        <div className="space-y-6 sm:space-y-8">
+        <div className="space-y-5 sm:space-y-6">
           {/* K² / Ksquare Brand Header at the Top */}
           <div className="flex items-center space-x-4">
             <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-white p-1.5 shrink-0 shadow-xl border border-white/20">
@@ -146,7 +146,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
           </div>
 
           {/* Text Content Aligned Below K² */}
-          <div className="space-y-5">
+          <div className="space-y-4">
             {/* Headline with Editorial Serif Accent */}
             <div className="space-y-1">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
@@ -167,19 +167,19 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
             </p>
 
             {/* Tagline */}
-            <p className="text-xs text-emerald-200/70 tracking-wider uppercase font-medium pt-1">
+            <p className="text-xs text-emerald-200/70 tracking-wider uppercase font-medium pt-0.5">
               Waste • People • Possibilities • Connected
             </p>
           </div>
         </div>
 
-        {/* Recyclables Collection Showcase Image in Empty Space Below Text */}
-        <div className="pt-4">
-          <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-black/10">
+        {/* Recyclables Collection Showcase Image (Placed higher up, directly below text) */}
+        <div className="pt-2">
+          <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-black/10 max-w-md">
             <img 
-              src="/recycle-box.jpg" 
+              src="/recyclables.jpg" 
               alt="Household recyclable collection" 
-              className="w-full h-44 sm:h-48 lg:h-52 object-cover select-none"
+              className="w-full h-48 sm:h-56 object-cover select-none"
             />
           </div>
         </div>
