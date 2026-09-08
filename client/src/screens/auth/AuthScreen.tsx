@@ -143,39 +143,25 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
           </div>
         </div>
 
-        {/* Element 2: Headline & Subtitle Text (Equal Spacing) */}
-        <div className="space-y-4 py-6 sm:py-8 my-auto">
-          {/* Headline with Editorial Serif Accent */}
-          <div className="space-y-1">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
-              New beginnings.
-            </h1>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
-              For you.
-            </h1>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#9fe3be] leading-[1.08] font-['Instrument_Serif',serif] italic pt-1">
-              For your scrap.
-            </h1>
-          </div>
-
-          {/* Subtitle */}
-          <p className="text-white/80 text-sm sm:text-base font-normal leading-relaxed max-w-md">
-            A cleaner home. A stronger local community.<br />
-            A second life for the things you leave behind.
-          </p>
-
-          {/* Tagline */}
-          <p className="text-xs text-emerald-200/70 tracking-wider uppercase font-medium pt-0.5">
-            Waste • People • Possibilities • Connected
-          </p>
+        {/* Headline with Editorial Serif Accent */}
+        <div className="space-y-1 py-2 sm:py-3 my-auto">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
+            New beginnings.
+          </h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
+            For you.
+          </h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#9fe3be] leading-[1.08] font-['Instrument_Serif',serif] italic pt-1">
+            For your scrap.
+          </h1>
         </div>
 
-        {/* Element 3: Recyclables Collection Items (Enlarged & Clean) */}
+        {/* Official Showcase Graphic (Contains Subtitle, Recyclables, Badge & 01-02-03 Steps) */}
         <div className="w-full flex justify-center -mb-2 sm:-mb-4">
           <img 
-            src="/recyclables-items.png" 
-            alt="Household recyclable scrap items" 
-            className="w-full max-w-xl sm:max-w-2xl h-56 sm:h-64 lg:h-72 object-contain select-none filter drop-shadow-[0_25px_35px_rgba(0,0,0,0.45)]"
+            src="/login-showcase.png" 
+            alt="A cleaner home. A stronger local community. A second life for the things you leave behind." 
+            className="w-full max-w-xl object-contain select-none"
           />
         </div>
 
