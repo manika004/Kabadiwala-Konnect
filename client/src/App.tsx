@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { UserRole, PickupRequest, RateItem, MaterialCategory, AIClassificationResult } from './types';
+import { UserRole, PickupRequest, RateItem, MaterialCategory, AIClassificationResult, AuthUser } from './types';
 import { api } from './services/api';
 import { Navbar } from './components/Navbar';
+import { AuthScreen } from './screens/auth/AuthScreen';
 
 // Customer screens
 import { CustomerHome } from './screens/customer/CustomerHome';
@@ -22,10 +23,21 @@ import { RecyclerDashboard } from './screens/recycler/RecyclerDashboard';
 import { AdminDashboard } from './screens/admin/AdminDashboard';
 
 // Icons
-import { Home, Camera, Calendar, MapPin, History, LayoutDashboard, Scale, DollarSign } from 'lucide-react';
+import { Home, Camera, Calendar, MapPin, History, LayoutDashboard, DollarSign } from 'lucide-react';
 
 export default function App() {
-  const [currentRole, setCurrentRole] = useState<UserRole>('customer');
+  // Authentication session state (persisted in localStorage)
+  const [authUser, setAuthUser] = useState<AuthUser | null>(() => {
+    try {
+      const saved = localStorage.getItem('kc_auth_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
+
+  const currentRole: UserRole = authUser?.role || 'customer';
+
   const [customerTab, setCustomerTab] = useState<'home' | 'scan' | 'request' | 'track' | 'history'>('home');
   const [collectorTab, setCollectorTab] = useState<'dashboard' | 'weigh' | 'earnings'>('dashboard');
 
@@ -58,15 +70,35 @@ export default function App() {
   };
 
   useEffect(() => {
-    refreshData();
-  }, [currentRole, customerTab, collectorTab]);
+    if (authUser) {
+      refreshData();
+    }
+  }, [authUser, customerTab, collectorTab]);
+
+  const handleLoginSuccess = (user: AuthUser) => {
+    setAuthUser(user);
+    try {
+      localStorage.setItem('kc_auth_user', JSON.stringify(user));
+    } catch (e) {
+      console.error('Error saving session:', e);
+    }
+  };
+
+  const handleLogout = () => {
+    setAuthUser(null);
+    try {
+      localStorage.removeItem('kc_auth_user');
+    } catch (e) {
+      console.error('Error clearing session:', e);
+    }
+  };
 
   const handleResetDemo = async () => {
     if (confirm('Reset demo state to initial test data?')) {
       await api.resetDemo();
       await refreshData();
-      setCurrentRole('customer');
       setCustomerTab('home');
+      setCollectorTab('dashboard');
     }
   };
 
@@ -83,13 +115,18 @@ export default function App() {
     setCustomerTab('track');
   };
 
+  // If user is not authenticated, show the Login/Signup screen with role picker
+  if (!authUser) {
+    return <AuthScreen onLoginSuccess={handleLoginSuccess} />;
+  }
+
   const activePickupsCount = pickups.filter(p => p.status !== 'completed' && p.status !== 'cancelled').length;
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <Navbar 
-        currentRole={currentRole}
-        onSelectRole={(role) => setCurrentRole(role)}
+        authUser={authUser}
+        onLogout={handleLogout}
         activePickupCount={activePickupsCount}
         onResetDemo={handleResetDemo}
       />
@@ -231,7 +268,8 @@ export default function App() {
                 pickup={selectedPickup}
                 onRefresh={refreshData}
                 onSwitchToCollector={() => {
-                  setCurrentRole('collector');
+                  const updatedUser = { ...authUser, role: 'collector' as UserRole };
+                  handleLoginSuccess(updatedUser);
                   setCollectorTab('dashboard');
                 }}
               />

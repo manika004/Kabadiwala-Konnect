@@ -10,6 +10,14 @@ export type PickupStatus =
 
 export type UserRole = 'customer' | 'collector' | 'recycler' | 'admin';
 
+export interface AuthUser {
+  id: string;
+  name: string;
+  phone: string;
+  role: UserRole;
+  address?: string;
+}
+
 export interface RateItem {
   category: MaterialCategory;
   name: string;
