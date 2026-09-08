@@ -117,7 +117,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
     <div className="min-h-screen w-full bg-[#124b38] flex flex-col lg:flex-row">
       
       {/* ================= LEFT EDITORIAL HERO PANEL ================= */}
-      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-center relative overflow-hidden p-8 sm:p-12 lg:p-14 xl:p-16 space-y-8 sm:space-y-10">
+      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-start relative overflow-hidden p-8 sm:p-10 lg:p-12 xl:p-14 space-y-8 sm:space-y-10">
         
         {/* K² / Ksquare Brand Header at the Top */}
         <div className="flex items-center space-x-4">
