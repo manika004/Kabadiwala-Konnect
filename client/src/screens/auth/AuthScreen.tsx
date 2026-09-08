@@ -117,68 +117,65 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
     <div className="min-h-screen w-full bg-[#124b38] flex flex-col lg:flex-row">
       
       {/* ================= LEFT EDITORIAL HERO PANEL ================= */}
-      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-between relative overflow-hidden p-8 sm:p-10 lg:p-12 xl:p-14 min-h-full">
+      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-between relative overflow-hidden p-8 sm:p-10 lg:p-12 xl:p-14 min-h-screen">
         
-        {/* Top Section: K² Brand & Aligned Text */}
-        <div className="space-y-5 sm:space-y-6">
-          {/* K² / Ksquare Brand Header at the Top */}
-          <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-white p-1.5 shrink-0 shadow-xl border border-white/20">
-              <img 
-                src="/logo.jpg" 
-                alt="Ksquare K² Logo" 
-                className="w-full h-full object-contain rounded-xl"
-              />
-            </div>
-            <div className="space-y-1">
-              <div className="flex items-center space-x-2">
-                <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">Ksquare</span>
-                <span className="px-2 py-0.5 rounded-lg bg-emerald-500 text-white font-extrabold text-xs tracking-wider shadow-sm">K²</span>
-              </div>
-              <p className="text-xs font-semibold text-[#9fe3be] uppercase tracking-wider">
-                Turning Waste into Tomorrow
-              </p>
-              <div className="flex items-center space-x-1.5 text-white/80 text-[10px] font-bold tracking-widest uppercase pt-0.5">
-                <Compass className="w-3 h-3 text-emerald-300" />
-                <span>NOTHING GOOD GOES TO WASTE</span>
-              </div>
-            </div>
+        {/* Element 1: K² / Ksquare Brand Header */}
+        <div className="flex items-center space-x-4">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-white p-1.5 shrink-0 shadow-xl border border-white/20">
+            <img 
+              src="/logo.jpg" 
+              alt="Ksquare K² Logo" 
+              className="w-full h-full object-contain rounded-xl"
+            />
           </div>
-
-          {/* Text Content Aligned Below K² */}
-          <div className="space-y-4">
-            {/* Headline with Editorial Serif Accent */}
-            <div className="space-y-1">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
-                New beginnings.
-              </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
-                For you.
-              </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#9fe3be] leading-[1.08] font-['Instrument_Serif',serif] italic pt-1">
-                For your scrap.
-              </h1>
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2">
+              <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">Ksquare</span>
+              <span className="px-2 py-0.5 rounded-lg bg-emerald-500 text-white font-extrabold text-xs tracking-wider shadow-sm">K²</span>
             </div>
-
-            {/* Subtitle */}
-            <p className="text-white/80 text-sm sm:text-base font-normal leading-relaxed max-w-md">
-              A cleaner home. A stronger local community.<br />
-              A second life for the things you leave behind.
+            <p className="text-xs font-semibold text-[#9fe3be] uppercase tracking-wider">
+              Turning Waste into Tomorrow
             </p>
-
-            {/* Tagline */}
-            <p className="text-xs text-emerald-200/70 tracking-wider uppercase font-medium pt-0.5">
-              Waste • People • Possibilities • Connected
-            </p>
+            <div className="flex items-center space-x-1.5 text-white/80 text-[10px] font-bold tracking-widest uppercase pt-0.5">
+              <Compass className="w-3 h-3 text-emerald-300" />
+              <span>NOTHING GOOD GOES TO WASTE</span>
+            </div>
           </div>
         </div>
 
-        {/* Recyclables Collection Items Cutout (No border, natural items) */}
-        <div className="pt-8 sm:pt-10 lg:pt-12 mt-auto">
+        {/* Element 2: Headline & Subtitle Text (Equal Spacing) */}
+        <div className="space-y-4 py-6 sm:py-8 my-auto">
+          {/* Headline with Editorial Serif Accent */}
+          <div className="space-y-1">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
+              New beginnings.
+            </h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
+              For you.
+            </h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#9fe3be] leading-[1.08] font-['Instrument_Serif',serif] italic pt-1">
+              For your scrap.
+            </h1>
+          </div>
+
+          {/* Subtitle */}
+          <p className="text-white/80 text-sm sm:text-base font-normal leading-relaxed max-w-md">
+            A cleaner home. A stronger local community.<br />
+            A second life for the things you leave behind.
+          </p>
+
+          {/* Tagline */}
+          <p className="text-xs text-emerald-200/70 tracking-wider uppercase font-medium pt-0.5">
+            Waste • People • Possibilities • Connected
+          </p>
+        </div>
+
+        {/* Element 3: Recyclables Collection Items (Enlarged & Clean) */}
+        <div className="w-full flex justify-center -mb-2 sm:-mb-4">
           <img 
             src="/recyclables-items.png" 
             alt="Household recyclable scrap items" 
-            className="w-full max-w-lg object-contain select-none drop-shadow-2xl"
+            className="w-full max-w-xl sm:max-w-2xl h-56 sm:h-64 lg:h-72 object-contain select-none filter drop-shadow-[0_25px_35px_rgba(0,0,0,0.45)]"
           />
         </div>
 
