@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       case 'customer':
       default:
         return {
-          label: 'Household',
+          label: 'Household & Org',
           icon: User,
           badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200',
         };

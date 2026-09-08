@@ -27,27 +27,16 @@ const ROLES: {
   defaultPhone: string;
   defaultName: string;
 }[] = [
-    {
+  {
     id: 'customer',
-    category: 'HOUSEHOLD',
-    title: 'I want to recycle',
-    description: 'Book doorstep pickups and give your scrap a second life.',
+    category: 'INDIVIDUALS & ORGANISATIONS',
+    title: 'I want to sell scrap',
+    description: 'Book doorstep pickups for households, residential societies, colleges & offices (Regular & Bulk).',
     icon: Home,
     iconBg: 'bg-[#eef8f2]',
     iconColor: 'text-[#124b38]',
     defaultPhone: '9876543210',
     defaultName: 'Aarav Sharma'
-  },
-  {
-    id: 'institution',
-    category: 'ORGANISATION / CAMPUS',
-    title: 'Bulk & Institutional scrap',
-    description: 'Universities, colleges & corporate bulk orders (250kg - 10T+).',
-    icon: Building2,
-    iconBg: 'bg-[#fef9c3]',
-    iconColor: 'text-[#ca8a04]',
-    defaultPhone: '9870011223',
-    defaultName: 'Amity University Campus'
   },
   {
     id: 'collector',
