@@ -117,57 +117,71 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
     <div className="min-h-screen w-full bg-[#124b38] flex flex-col lg:flex-row">
       
       {/* ================= LEFT EDITORIAL HERO PANEL ================= */}
-      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-start relative overflow-hidden p-8 sm:p-10 lg:p-12 xl:p-14 space-y-8 sm:space-y-10">
+      <div className="lg:w-[45%] xl:w-[42%] bg-[#124b38] text-white flex flex-col justify-between relative overflow-hidden p-8 sm:p-10 lg:p-12 xl:p-14 space-y-6">
         
-        {/* K² / Ksquare Brand Header at the Top */}
-        <div className="flex items-center space-x-4">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-white p-1.5 shrink-0 shadow-xl border border-white/20">
-            <img 
-              src="/logo.jpg" 
-              alt="Ksquare K² Logo" 
-              className="w-full h-full object-contain rounded-xl"
-            />
+        {/* Top Section: K² Brand & Aligned Text */}
+        <div className="space-y-6 sm:space-y-8">
+          {/* K² / Ksquare Brand Header at the Top */}
+          <div className="flex items-center space-x-4">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden bg-white p-1.5 shrink-0 shadow-xl border border-white/20">
+              <img 
+                src="/logo.jpg" 
+                alt="Ksquare K² Logo" 
+                className="w-full h-full object-contain rounded-xl"
+              />
+            </div>
+            <div className="space-y-1">
+              <div className="flex items-center space-x-2">
+                <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">Ksquare</span>
+                <span className="px-2 py-0.5 rounded-lg bg-emerald-500 text-white font-extrabold text-xs tracking-wider shadow-sm">K²</span>
+              </div>
+              <p className="text-xs font-semibold text-[#9fe3be] uppercase tracking-wider">
+                Turning Waste into Tomorrow
+              </p>
+              <div className="flex items-center space-x-1.5 text-white/80 text-[10px] font-bold tracking-widest uppercase pt-0.5">
+                <Compass className="w-3 h-3 text-emerald-300" />
+                <span>NOTHING GOOD GOES TO WASTE</span>
+              </div>
+            </div>
           </div>
-          <div className="space-y-1">
-            <div className="flex items-center space-x-2">
-              <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">Ksquare</span>
-              <span className="px-2 py-0.5 rounded-lg bg-emerald-500 text-white font-extrabold text-xs tracking-wider shadow-sm">K²</span>
+
+          {/* Text Content Aligned Below K² */}
+          <div className="space-y-5">
+            {/* Headline with Editorial Serif Accent */}
+            <div className="space-y-1">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
+                New beginnings.
+              </h1>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
+                For you.
+              </h1>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#9fe3be] leading-[1.08] font-['Instrument_Serif',serif] italic pt-1">
+                For your scrap.
+              </h1>
             </div>
-            <p className="text-xs font-semibold text-[#9fe3be] uppercase tracking-wider">
-              Turning Waste into Tomorrow
+
+            {/* Subtitle */}
+            <p className="text-white/80 text-sm sm:text-base font-normal leading-relaxed max-w-md">
+              A cleaner home. A stronger local community.<br />
+              A second life for the things you leave behind.
             </p>
-            <div className="flex items-center space-x-1.5 text-white/80 text-[10px] font-bold tracking-widest uppercase pt-0.5">
-              <Compass className="w-3 h-3 text-emerald-300" />
-              <span>NOTHING GOOD GOES TO WASTE</span>
-            </div>
+
+            {/* Tagline */}
+            <p className="text-xs text-emerald-200/70 tracking-wider uppercase font-medium pt-1">
+              Waste • People • Possibilities • Connected
+            </p>
           </div>
         </div>
 
-        {/* Text Content Aligned Below K² */}
-        <div className="space-y-6">
-          {/* Headline with Editorial Serif Accent */}
-          <div className="space-y-1">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
-              New beginnings.
-            </h1>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
-              For you.
-            </h1>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#9fe3be] leading-[1.08] font-['Instrument_Serif',serif] italic pt-1">
-              For your scrap.
-            </h1>
+        {/* Recyclables Collection Showcase Image in Empty Space Below Text */}
+        <div className="pt-4">
+          <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-black/10">
+            <img 
+              src="/recycle-box.jpg" 
+              alt="Household recyclable collection" 
+              className="w-full h-44 sm:h-48 lg:h-52 object-cover select-none"
+            />
           </div>
-
-          {/* Subtitle */}
-          <p className="text-white/80 text-sm sm:text-base font-normal leading-relaxed max-w-md">
-            A cleaner home. A stronger local community.<br />
-            A second life for the things you leave behind.
-          </p>
-
-          {/* Tagline */}
-          <p className="text-xs text-emerald-200/70 tracking-wider uppercase font-medium pt-1">
-            Waste • People • Possibilities • Connected
-          </p>
         </div>
 
       </div>
