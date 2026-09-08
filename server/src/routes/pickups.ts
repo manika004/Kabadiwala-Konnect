@@ -67,7 +67,13 @@ router.post('/', (req, res) => {
     preferredTime = 'Today, 2:00 PM - 4:00 PM',
     notes,
     aiClassification,
-    collectorId
+    collectorId,
+    isBulkOrder,
+    organizationName,
+    institutionType,
+    vehicleRequired,
+    esgCertificateRequested,
+    billingGst
   } = req.body;
 
   if (!materialCategory || !estimatedWeight || !location?.address) {
@@ -112,6 +118,12 @@ router.post('/', (req, res) => {
     preferredTime,
     notes,
     aiClassification,
+    isBulkOrder: Boolean(isBulkOrder),
+    organizationName,
+    institutionType,
+    vehicleRequired,
+    esgCertificateRequested: Boolean(esgCertificateRequested),
+    billingGst,
     status: 'requested',
     statusTimeline: [
       {

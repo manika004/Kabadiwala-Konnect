@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthUser } from '../types';
-import { RefreshCw, User, Truck, Factory, Shield, LogOut } from 'lucide-react';
+import { RefreshCw, User, Truck, Factory, Shield, LogOut, Building2 } from 'lucide-react';
 
 interface NavbarProps {
   authUser: AuthUser | null;
@@ -17,6 +17,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const getRoleConfig = (role?: string) => {
     switch (role) {
+      case 'institution':
+        return {
+          label: 'University / Campus',
+          icon: Building2,
+          badgeClass: 'bg-amber-100 text-amber-900 border-amber-200',
+        };
       case 'collector':
         return {
           label: 'Kabadiwala',

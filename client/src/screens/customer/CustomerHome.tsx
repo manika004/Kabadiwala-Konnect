@@ -1,7 +1,7 @@
 import React from 'react';
 import { PickupRequest, RateItem } from '../../types';
 import { StatusBadge } from '../../components/StatusBadge';
-import { Camera, Calendar, ArrowRight, Sparkles, TrendingUp, ShieldCheck, Clock, MapPin } from 'lucide-react';
+import { Camera, Calendar, ArrowRight, Sparkles, TrendingUp, ShieldCheck, Clock, MapPin, Building2, Award } from 'lucide-react';
 
 interface Props {
   onNavigate: (tab: string) => void;
@@ -86,6 +86,31 @@ export const CustomerHome: React.FC<Props> = ({
           </button>
         </div>
       )}
+
+            {/* Institutional & University Bulk Scrap Banner */}
+      <div className="bg-gradient-to-r from-amber-500/10 via-emerald-500/10 to-teal-500/10 border border-amber-300/60 rounded-3xl p-5 sm:p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="space-y-1 max-w-2xl">
+          <div className="flex items-center space-x-2">
+            <span className="px-2 py-0.5 rounded-full bg-amber-200/80 text-amber-900 font-extrabold text-[10px] uppercase tracking-wider">
+              Institutions & Universities
+            </span>
+            <span className="text-xs font-bold text-emerald-800">• Heavy Volume Fleet</span>
+          </div>
+          <h3 className="text-base sm:text-lg font-bold text-slate-900">
+            Placing large orders for your Campus, IT Park, or School?
+          </h3>
+          <p className="text-xs text-slate-600 leading-relaxed">
+            Schedule bulk pickups (250kg to 10+ tonnes) with dedicated heavy vehicle loaders, +10% bulk bonus rates, and official <strong>ESG / NAAC Green Sustainability Certificates</strong>.
+          </p>
+        </div>
+        <button
+          onClick={() => onNavigate('request')}
+          className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#124b38] hover:bg-[#0c3628] text-white font-bold text-xs shadow-md transition shrink-0"
+        >
+          <Building2 className="w-3.5 h-3.5" />
+          <span>Book Bulk Campus Order</span>
+        </button>
+      </div>
 
       {/* Live Market Scrap Rates */}
       <div className="space-y-4">

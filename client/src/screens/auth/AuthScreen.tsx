@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { UserRole, AuthUser } from '../../types';
 import { 
   Home, 
+  Building2,
   Truck, 
   Factory, 
   ShieldCheck, 
@@ -26,7 +27,7 @@ const ROLES: {
   defaultPhone: string;
   defaultName: string;
 }[] = [
-  {
+    {
     id: 'customer',
     category: 'HOUSEHOLD',
     title: 'I want to recycle',
@@ -36,6 +37,17 @@ const ROLES: {
     iconColor: 'text-[#124b38]',
     defaultPhone: '9876543210',
     defaultName: 'Aarav Sharma'
+  },
+  {
+    id: 'institution',
+    category: 'ORGANISATION / CAMPUS',
+    title: 'Bulk & Institutional scrap',
+    description: 'Universities, colleges & corporate bulk orders (250kg - 10T+).',
+    icon: Building2,
+    iconBg: 'bg-[#fef9c3]',
+    iconColor: 'text-[#ca8a04]',
+    defaultPhone: '9870011223',
+    defaultName: 'Amity University Campus'
   },
   {
     id: 'collector',
@@ -103,8 +115,10 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({ onLoginSuccess }) => {
       name: name.trim() || activeObj?.defaultName || 'User',
       phone: '+91 ' + cleanPhone.slice(-10),
       role: selectedRole,
-      address: selectedRole === 'customer' 
-        ? 'Flat 402, Green Meadows, Sector 14, Gurugram' 
+      address: selectedRole === 'institution'
+        ? 'Amity Campus Gate 3, Sector 125, Gurugram'
+        : selectedRole === 'customer'
+        ? 'Flat 402, Green Meadows, Sector 14, Gurugram'
         : 'Sector 14 Stand, Gurugram'
     };
 

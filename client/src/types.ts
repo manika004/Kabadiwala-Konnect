@@ -8,7 +8,7 @@ export type PickupStatus =
   | 'completed' 
   | 'cancelled';
 
-export type UserRole = 'customer' | 'collector' | 'recycler' | 'admin';
+export type UserRole = 'customer' | 'collector' | 'recycler' | 'admin' | 'institution';
 
 export interface AuthUser {
   id: string;
@@ -68,6 +68,12 @@ export interface PickupRequest {
   preferredTime: string;
   notes?: string;
   wasteImageUrl?: string;
+  isBulkOrder?: boolean;
+  organizationName?: string;
+  institutionType?: string;
+  vehicleRequired?: string;
+  esgCertificateRequested?: boolean;
+  billingGst?: string;
   aiClassification?: {
     category: MaterialCategory;
     confidence: number;

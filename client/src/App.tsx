@@ -132,7 +132,7 @@ export default function App() {
       />
 
       {/* Role Sub-Navigation (if customer or collector) */}
-      {currentRole === 'customer' && (
+      {(currentRole === 'customer' || currentRole === 'institution') && (
         <div className="bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="flex space-x-2 sm:space-x-4 py-2 overflow-x-auto text-xs font-semibold">
@@ -238,7 +238,7 @@ export default function App() {
       {/* Main Screen Router */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Customer Experience */}
-        {currentRole === 'customer' && (
+        {(currentRole === 'customer' || currentRole === 'institution') && (
           <>
             {customerTab === 'home' && (
               <CustomerHome 
@@ -260,6 +260,8 @@ export default function App() {
               <RequestPickup 
                 initialMaterial={prefilledCategory}
                 rates={rates}
+                isInstitutionUser={currentRole === 'institution'}
+                authUser={authUser}
                 onPickupCreated={handlePickupCreated}
               />
             )}

@@ -21,7 +21,7 @@ export interface RateItem {
 export interface User {
   id: string;
   name: string;
-  role: 'customer' | 'collector' | 'recycler' | 'admin';
+  role: 'customer' | 'collector' | 'recycler' | 'admin' | 'institution';
   phone: string;
   address: string;
   coordinates: { lat: number; lng: number };
@@ -58,6 +58,12 @@ export interface PickupRequest {
   preferredTime: string;
   notes?: string;
   wasteImageUrl?: string;
+  isBulkOrder?: boolean;
+  organizationName?: string;
+  institutionType?: string;
+  vehicleRequired?: string;
+  esgCertificateRequested?: boolean;
+  billingGst?: string;
   aiClassification?: {
     category: MaterialCategory;
     confidence: number;
