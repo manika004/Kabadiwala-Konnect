@@ -1,7 +1,7 @@
 {
   "name": "kabadiwala-connect",
   "version": "1.0.0",
-  "description": "Kabadiwala Connect — AI-Powered Circular Waste Network Hackathon MVP",
+  "description": "Kabadiwala Konnect — AI-Powered Circular Waste Network Hackathon MVP",
   "scripts": {
     "dev:server": "npm --prefix server run dev",
     "dev:client": "npm --prefix client run dev",

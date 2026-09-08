@@ -1,7 +1,7 @@
 {
   "name": "kabadiwala-connect-server",
   "version": "1.0.0",
-  "description": "Backend API for Kabadiwala Connect Hackathon MVP",
+  "description": "Backend API for Kabadiwala Konnect Hackathon MVP",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",

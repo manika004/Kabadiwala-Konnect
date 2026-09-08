@@ -1,4 +1,4 @@
-# Kabadiwala Connect ♻️
+# Kabadiwala Konnect ♻️
 > **Short PRD Hackathon MVP** — Connecting households, informal waste collectors (Kabadiwalas), and recyclers through AI-assisted waste identification, smart pickup matching, and transparent recycling transactions.
 
 ---

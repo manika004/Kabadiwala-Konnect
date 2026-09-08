@@ -26,7 +26,7 @@ export const DigitalReceiptModal: React.FC<Props> = ({ receipt, onClose }) => {
             <CheckCircle className="w-7 h-7" />
           </div>
           <h2 className="text-xl font-bold tracking-tight">Verified Digital Receipt</h2>
-          <p className="text-emerald-100 text-xs font-medium mt-1">Kabadiwala Connect • Transparent Recycling Network</p>
+          <p className="text-emerald-100 text-xs font-medium mt-1">Kabadiwala Konnect • Transparent Recycling Network</p>
           <div className="inline-block mt-3 px-3 py-1 rounded-full bg-white/15 text-xs font-mono tracking-wider border border-white/20">
             {receipt.receiptNumber}
           </div>

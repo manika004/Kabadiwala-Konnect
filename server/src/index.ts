@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.get('/api/health', (_req, res) => {
   res.json({
     status: 'ok',
-    service: 'Kabadiwala Connect API',
+    service: 'Kabadiwala Konnect API',
     version: '1.0.0',
     timestamp: new Date().toISOString()
   });
@@ -34,7 +34,7 @@ app.use('/api/analytics', analyticsRoutes);
 
 if (!process.env.VERCEL) {
   app.listen(PORT, () => {
-    console.log('Kabadiwala Connect Backend running on http://localhost:' + PORT);
+    console.log('Kabadiwala Konnect Backend running on http://localhost:' + PORT);
   });
 }
 export default app;
